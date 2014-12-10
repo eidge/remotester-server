@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "rsterdb",
+    "password": null,
+    "database": "rsterdb_dev",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "rsterdb",
+    "password": null,
+    "database": "rsterdb_test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "rsterdb",
+    "password": null,
+    "database": "rsterdb_production",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
