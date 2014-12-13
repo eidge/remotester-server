@@ -9,9 +9,14 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       name: {
+        allowNull: false,
         type: DataTypes.STRING
       },
       email: {
+        allowNull: false,
+        type: DataTypes.STRING
+      },
+      token: {
         type: DataTypes.STRING
       },
       password_hash: {

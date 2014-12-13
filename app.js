@@ -4,8 +4,8 @@ var logger = require('morgan');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var auth   = require('./routes/auth');
+var routes = require(__dirname + '/routes/index');
+var auth   = require(__dirname + '/routes/auth');
 
 var app = express();
 

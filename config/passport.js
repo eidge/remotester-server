@@ -1,9 +1,7 @@
 module.exports = function(passport) {
   var LocalStrategy  = require('passport-local').Strategy;
   var BearerStrategy = require('passport-http-bearer').Strategy;
-  var User           = require('../models/index').User;
-
-  var userAttributes = ['id', 'name', 'email'];
+  var User           = require(__dirname + '/../models/index').User;
 
   passport.serializeUser(function(user, done) {
     done(null,user.values.id);
@@ -12,7 +10,7 @@ module.exports = function(passport) {
   passport.deserializeUser(function(id, done) {
     console.log(id);
     User
-      .find({ where: { id: id }, attributes: userAttributes })
+      .find({ where: { id: id } })
       .then(function(user){
         console.log(user)
         return done(null, user);
@@ -26,12 +24,15 @@ module.exports = function(passport) {
     },
     function(username, password, done) {
       User
-        .find({ where: { email: username }, attributes: userAttributes })
+        .find({ where: { email: username } })
         .then(function(user) {
           if(user) {
-            done(null, user);
+            if(user.validatePassword(password))
+              user.createTokenIfNotExists().complete(function(err) { done(err,user); })
+            else
+              done(null, false, { error: 'The password you typed does not match this email' });
           } else {
-            done(null, false, { error: 'Wrong username or password' });
+            done(null, false, { error: 'The email you typed does not exist' });
           }
         })
     }
@@ -41,7 +42,7 @@ module.exports = function(passport) {
   passport.use(new BearerStrategy(
     function(token, done) {
       User
-        .find({ where: { email: token }, attributes: userAttributes })
+        .find({ where: { token: token } })
         .then(function(user) {
           if(user) {
             done(null, user, { scope: 'all' });

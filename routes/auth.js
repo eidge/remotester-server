@@ -14,7 +14,7 @@ function me(req, res) {
 }
 
 function signin(req, res) {
-  res.send(req.user);
+  res.status(201).send(req.user.values);
 }
 
 function signup(req, res) {
