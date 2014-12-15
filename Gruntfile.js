@@ -14,6 +14,7 @@ module.exports = function(grunt) {
         where: {
           email: 'hugoribeira@gmail.com',
           name: 'Hugo Ribeira',
+          password_hash: '$2a$10$Ikr/Sd7kUIBKoxoIc8jK2uHD10aNLwdmlR5Yx2UWyET7BVuyEwAky',
           token: 'c3b6a0c402b26c8669175fb5b84d1c8389fe210297236b0b635aafbee5bd05ad248762ab749eee5a0edda0c6d4b744d9'
         }
       })

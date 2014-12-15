@@ -20,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       instanceMethods: {
         validatePassword: function(password) {
+          if(!password || !this.getDataValue('password_hash')) return false;
           return bcrypt.compareSync(password, this.getDataValue('password_hash'));
         },
         createTokenIfNotExists: function() {
