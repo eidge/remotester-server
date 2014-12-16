@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       });
   });
 
-  grunt.registerTask('db:drop', 'Seed database', function(){
+  grunt.registerTask('db:drop', 'Drop database tables', function(){
     var models = require(__dirname + '/models');
     models.User.drop();
   });
