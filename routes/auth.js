@@ -10,19 +10,23 @@ router.post('/signup',   passport.authenticate('bearer', { session: false }), si
 router.delete('/signin', signout);
 
 function me(req, res) {
+  'use strict'
   res.send(req.user);
 }
 
 function signin(req, res) {
+  'use strict'
   res.status(201).send(req.user.values);
 }
 
 function signup(req, res) {
+  'use strict'
   res.send(req.user);
 }
 
 function signout(req, res) {
-  res.send("signed out");
+  'use strict'
+  res.send('signed out');
 }
 
 

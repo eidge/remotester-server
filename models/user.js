@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 var bcrypt = require('bcrypt');
 var crypto = require('crypto');
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define(
-    "User",
+    'User',
     {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
