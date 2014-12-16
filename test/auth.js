@@ -16,6 +16,7 @@ var sequelize = new Sequelize(
 var existingUser;
 
 describe('Auth', function() {
+  'use strict'
   before(function(done) {
     models
       .User
